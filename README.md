@@ -1,2 +1,44 @@
 # sumelim
-A bqcsv action module that eliminates rows or columns from a CSV file based on whether or not the contents sum to a given threshold
+A bqcsv action module that eliminates rows or columns from a CSV file based on whether or not the contents sum to a given threshold. For example, given the following CSV table:
+
+|  |Species/Site|1|2|3|4|5|6|7|8|9|10|
+|--|------------|-|-|-|-|-|-|-|-|-|--|
+|1 |A           |0|1|1|0|1|0|1|1|1|0 |
+|2 |B           |1|0|0|0|0|0|1|0|0|1 |
+|3 |C           |1|0|0|0|1|0|0|0|1|1 |
+|4 |D           |1|0|1|1|0|0|1|1|1|0 |
+|5 |E           |1|0|0|0|0|0|0|1|0|1 |
+|6 |F           |0|0|0|0|1|1|0|0|1|0 |
+|7 |G           |0|0|0|0|0|0|0|0|1|0 |
+|8 |H           |1|0|1|0|1|0|1|0|1|0 |
+|9 |I           |0|1|0|0|1|1|0|1|0|1 |
+|10|J           |1|1|1|0|0|0|0|0|1|1 |
+
+Choosing to eliminate rows with a threshold of 2 produces the following table:
+
+|  |Species/Site|1|2|3|4|5|6|7|8|9|10|
+|--|------------|-|-|-|-|-|-|-|-|-|--|
+|1 |A           |0|1|1|0|1|0|1|1|1|0 |
+|2 |B           |1|0|0|0|0|0|1|0|0|1 |
+|3 |C           |1|0|0|0|1|0|0|0|1|1 |
+|4 |D           |1|0|1|1|0|0|1|1|1|0 |
+|5 |E           |1|0|0|0|0|0|0|1|0|1 |
+|6 |F           |0|0|0|0|1|1|0|0|1|0 |
+|8 |H           |1|0|1|0|1|0|1|0|1|0 |
+|9 |I           |0|1|0|0|1|1|0|1|0|1 |
+|10|J           |1|1|1|0|0|0|0|0|1|1 |
+
+Choosing to eliminate columns with a threshold of 2 from the new table produces the following table:
+
+|  |Species/Site|1|2|3|5|6|7|8|9|10|
+|--|------------|-|-|-|-|-|-|-|-|--|
+|1 |A           |0|1|1|1|0|1|1|1|0 |
+|2 |B           |1|0|0|0|0|1|0|0|1 |
+|3 |C           |1|0|0|1|0|0|0|1|1 |
+|4 |D           |1|0|1|0|0|1|1|1|0 |
+|5 |E           |1|0|0|0|0|0|1|0|1 |
+|6 |F           |0|0|0|1|1|0|0|1|0 |
+|8 |H           |1|0|1|1|0|1|0|1|0 |
+|9 |I           |0|1|0|1|1|0|1|0|1 |
+|10|J           |1|1|1|0|0|0|0|1|1 |
+
