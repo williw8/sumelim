@@ -113,8 +113,8 @@ class SumElimPlugin(object):
 
         # rows
         if 0 == roc:
-          memw.setHeader(table.get_header())
-          for row in table.get_iter():
+          memw.setHeader(table.getHeader())
+          for row in table.getIter():
             summ = 0.0
             for col in row:
               try:
@@ -130,9 +130,9 @@ class SumElimPlugin(object):
           wx.MessageBox(msg, 'Info', wx.OK | wx.ICON_INFORMATION)
           sums = list()
           header = list()
-          for v in table.get_header():
+          for v in table.getHeader():
             sums.append(0.0)
-          for row in table.get_iter():
+          for row in table.getIter():
             idx = 0
             for col in row:
               try:
@@ -145,12 +145,12 @@ class SumElimPlugin(object):
           table.reset()
           header = list()
           idx = 0
-          for v in table.get_header():
+          for v in table.getHeader():
             if sums[idx] >= threshold:
               header.append(v) 
             idx += 1 
           memw.setHeader(header)
-          for row in table.get_iter():
+          for row in table.getIter():
             idx = 0
             output_row = list()
             for col in row:
